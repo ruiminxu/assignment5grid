@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Assignment 5</title>
+</head>
+
+<body>
+    <div id="buttonContainer">
+        
+        <div class = "sizing">
+            <button class = "btn" onClick="addRow()">Add Row</button>
+            <button class = "btn" onClick="removeRows()">Remove Row</button>
+            <button class = "btn" onClick="addColumn()">Add Column</button>
+            <button class = "btn" onClick="removeColumns()">Remove Column</button>
+        </div>
+
+        <div class = "dropdown">
+            <button class = "dropbtn">Choose a color</button>
+            <div class="dropdown-content">
+                <a href="#" id = "Yellow" onClick="pickColor(this.id)">Yellow</a>
+                <a href="#" id = "Red" onClick="pickColor(this.id)">Red</a>
+                <a href="#" id = "Blue" onClick="pickColor(this.id)">Blue</a>
+              </div>
+            </div>
+
+        <div class = "colorChanger">
+            <button class = "btn" onClick="fillAllCells()">Fill All cell</button>
+            <button class = "btn" onClick="fillUncoloredCells()">Fill Uncolored Cell</button>
+            <button class = "btn" onClick="clearAllCells()">Clear All Cells</button>
+        </div>
+        
+        
+    </div>
+
+    <table id="grid"></table>
+
+</body>
+    <script src="script.js"></script>
+</html>
