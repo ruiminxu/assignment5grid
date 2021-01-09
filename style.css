@@ -1,6 +1,7 @@
 :root{
     
     --Changeable-Color--: white;
+    --Changeable-img--: url();
 }
 
 
@@ -15,7 +16,7 @@ tr, td {
     width: 100px;
     height: 100px;
     background-color: var(--Changeable-Color--);
-    background-image: url(/50688605.jpg);
+    background-image: var(--Changeable-img--);
 }
 
 #buttonContainer{

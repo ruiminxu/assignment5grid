@@ -1,8 +1,8 @@
 let rowNum = 0;
 let columnNum = 0;
 let currentColor = "white";
+let currentBackground = "url()";
 let checker = false;
-
 
 function addRow()
 {
@@ -153,8 +153,15 @@ function removeColumns()
 }
 
 function pickColor(id)
-{
-    currentColor = id.toLowerCase();    
+{  
+    var x = id;
+    if(x === 'Depak')
+    {
+        currentBackground = 'url(/50688605.jpg)';
+        checker = true;
+    }else{
+        currentColor = id.toLowerCase();    
+    }
 }
 
 function fillAllCells()
@@ -202,7 +209,10 @@ function cellColorChange(cell)
 {
     cell.addEventListener("mousedown", function()
     {
+       if(checker == false)
+       {
         var color = cell.style.backgroundColor;
+        
         
         if(color.toLowerCase() != currentColor.toLowerCase())
         {
@@ -211,6 +221,21 @@ function cellColorChange(cell)
         }else if(color == currentColor){
             cell.style.backgroundColor = "white";
         }
+       }else{
+            
+            if(currentBackground === 'url(/50688605.jpg)'){
+                console.log("heres");
+                
+                cell.style.backgroundImage = 'url(/50688605.jpg)';
+                
+                checker == true;
+            }else if(currentBackground === "url()")
+            {
+                console.log("here");
+                cell.style.backgroundImage = 'url()'; 
+            }
+       }
+       
     })
     
 };
