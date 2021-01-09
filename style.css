@@ -15,6 +15,7 @@ tr, td {
     width: 100px;
     height: 100px;
     background-color: var(--Changeable-Color--);
+    background-image: url(/50688605.jpg);
 }
 
 #buttonContainer{

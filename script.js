@@ -203,8 +203,6 @@ function cellColorChange(cell)
     cell.addEventListener("mousedown", function()
     {
         var color = cell.style.backgroundColor;
-        console.log(color);
-        console.log(currentColor);
         
         if(color.toLowerCase() != currentColor.toLowerCase())
         {
