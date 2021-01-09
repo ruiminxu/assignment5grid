@@ -3,11 +3,11 @@ let columnNum = 0;
 let currentColor = "white";
 let currentBackground = "url()";
 let checker = false;
+let rowCleared = false;
 
 function addRow()
 {
     let table = document.getElementById("grid");
-  
     if(rowNum == 0 && columnNum == 0)
     {
         let row = document.createElement("tr");
@@ -21,7 +21,7 @@ function addRow()
         cell.classList.add(cellName);  
         cell.style.backgroundColor = currentColor;
         cellColorChange(cell);  
-        row.appendChild(cell); 
+        row.appendChild(cell);
         rowNum++;
         columnNum++;
     }else{
@@ -39,7 +39,7 @@ function addRow()
                 cell.style.backgroundColor = currentColor;
                 cellColorChange(cell)
                 row.appendChild(cell); 
-                rowNum++;
+                rowNum++;        
             }else if(columnNum >= 1)
             {
                 // let cell = document.createElement("td");
@@ -66,8 +66,7 @@ function addRow()
 function addColumn()
 {
     let table = document.getElementById("grid");
-
-    if(rowNum == 0 && columnNum == 0)
+    if(rowNum == 0 && columnNum == 0 || rowNum == -1 && columnNum == -1)
     {
         let row = document.createElement("tr");
         let cell = document.createElement("td");
@@ -95,6 +94,7 @@ function addColumn()
             cellColorChange(cell)
             row.appendChild(cell); 
             columnNum++;
+           
         }else if(rowNum >= 1)
         {
             for(let i = 0; i < rowNum; i++)
@@ -110,13 +110,24 @@ function addColumn()
                 row.appendChild(cell); 
             }
             columnNum++;
+           
         }
     }
+
 }
 
 function removeRows()
 {
-    if(rowNum === 0)
+    if(rowNum === 1)
+    {
+        let currentRowIndex = rowNum - 1;
+        let row = document.getElementById(`row${currentRowIndex}`).remove();
+        rowNum--;
+        if(rowNum === 0)
+        {
+            columnNum = 0;
+        }
+    }else if(rowNum === 0)
     {
         alert("There is no more rows to be removed!");
         columnNum = 0;
@@ -129,19 +140,6 @@ function removeRows()
 
 function removeColumns()
 {
-    if(columnNum === 0)
-    {
-        alert("There is no more columns to be removed!");
-        
-        for(let i = 0; i < rowNum; i++)
-        {
-            let row = document.getElementById(`row${i}`).remove();
-        }
-
-        rowNum = 0;
-
-    }else{
-        
         let currentRowIndex = rowNum - 1;
         let currentColumnIndex = columnNum - 1;
         for(let i = currentRowIndex; i >= 0; i--)
@@ -149,8 +147,23 @@ function removeColumns()
             let cell = document.getElementById(`cell${i},${currentColumnIndex}`).remove();
         }
         columnNum--;
-    }
+        
+        if(columnNum === 0)
+        {
+            for(let i = 0; i < rowNum; i++)
+            {
+                let row = document.getElementById(`row${i}`).remove();
+            }
+            rowNum = 0;
+            
+        }else if(columnNum === -1)
+        {
+            alert("There are no more columns to be removed!");
+            columnNum = 0;
+        }
+    
 }
+
 
 function pickColor(id)
 {  
@@ -224,18 +237,18 @@ function cellColorChange(cell)
        }else{
             
             if(currentBackground === 'url(/50688605.jpg)'){
-                console.log("heres");
                 
-                cell.style.backgroundImage = 'url(/50688605.jpg)';
-                
-                checker == true;
-            }else if(currentBackground === "url()")
-            {
-                console.log("here");
-                cell.style.backgroundImage = 'url()'; 
+                for(let i = 0; i < rowNum; i++)
+                {
+                    for(let j = 0; j < columnNum; j++)
+                    {
+                        let cell = document.getElementById(`cell${i},${j}`);
+                        cell.style.backgroundImage = 'url(/50688605.jpg)';  
+                    }   
+                }
+                alert("Error Depak overload : Please shut down it down")
             }
        }
-       
     })
     
 };
