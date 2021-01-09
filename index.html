@@ -10,38 +10,35 @@
 
 <body>
     <div id="buttonContainer">
-        
-        <div class = "sizing">
-            <button class = "btn" onClick="addRow()">Add Row</button>
-            <button class = "btn" onClick="removeRows()">Remove Row</button>
-            <button class = "btn" onClick="addColumn()">Add Column</button>
-            <button class = "btn" onClick="removeColumns()">Remove Column</button>
+
+        <div class="sizing">
+            <button class="btn add" onClick="addRow()">Add Row</button>
+            <button class="btn rmv" onClick="removeRows()">Remove Row</button>
+            <button class="btn add" onClick="addColumn()">Add Column</button>
+            <button class="btn rmv" onClick="removeColumns()">Remove Column</button>
         </div>
 
-        <div class = "dropdown">
-            <button class = "dropbtn">Choose a color</button>
+        <div class="dropdown">
+            <button class="dropbtn">Choose a color</button>
             <div class="dropdown-content">
-                <a href="#" id = "Yellow" onClick="pickColor(this.id)">Yellow</a>
-                <a href="#" id = "Red" onClick="pickColor(this.id)">Red</a>
-                <a href="#" id = "Blue" onClick="pickColor(this.id)">Blue</a>
-                <a href="#" id = "Depak" onClick="pickColor(this.id)">Depak</a>
-              </div>
+                <a href="#" id="Yellow" onClick="pickColor(this.id)">Yellow</a>
+                <a href="#" id="Red" onClick="pickColor(this.id)">Red</a>
+                <a href="#" id="Blue" onClick="pickColor(this.id)">Blue</a>
             </div>
-
-        <div class = "colorChanger">
-            <button class = "btn" onClick="fillAllCells()">Fill All cell</button>
-            <button class = "btn" onClick="fillUncoloredCells()">Fill Uncolored Cell</button>
-            <button class = "btn" onClick="clearAllCells()">Clear All Cells</button>
         </div>
-        
-        
-    </div>
 
-    <div class ="gridLayout">
+        <div class="colorChanger">
+            <button class="btn" onClick="fillAllCells()">Fill All cell</button>
+            <button class="btn" onClick="fillUncoloredCells()">Fill Uncolored Cell</button>
+            <button class="btn" onClick="clearAllCells()">Clear All Cells</button>
+        </div>
+
+
+    </div>
+    <div id="table">
         <table id="grid"></table>
     </div>
-    
-
 </body>
-    <script src="script.js"></script>
+<script src="script.js"></script>
+
 </html>
