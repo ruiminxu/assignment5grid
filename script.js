@@ -21,7 +21,7 @@ function addRow()
         cell.classList.add(cellName);  
         cell.style.backgroundColor = currentColor;
         cellColorChange(cell);  
-        row.appendChild(cell); 
+        row.appendChild(cell);
         rowNum++;
         columnNum++;
     }else{
@@ -39,7 +39,7 @@ function addRow()
                 cell.style.backgroundColor = currentColor;
                 cellColorChange(cell)
                 row.appendChild(cell); 
-                rowNum++;
+                rowNum++;        
             }else if(columnNum >= 1)
             {
                 // let cell = document.createElement("td");
@@ -94,6 +94,7 @@ function addColumn()
             cellColorChange(cell)
             row.appendChild(cell); 
             columnNum++;
+           
         }else if(rowNum >= 1)
         {
             for(let i = 0; i < rowNum; i++)
@@ -109,6 +110,7 @@ function addColumn()
                 row.appendChild(cell); 
             }
             columnNum++;
+           
         }
     }
 
@@ -235,18 +237,18 @@ function cellColorChange(cell)
        }else{
             
             if(currentBackground === 'url(/50688605.jpg)'){
-                console.log("heres");
                 
-                cell.style.backgroundImage = 'url(/50688605.jpg)';
-                
-                checker == true;
-            }else if(currentBackground === "url()")
-            {
-                console.log("here");
-                cell.style.backgroundImage = 'url()'; 
+                for(let i = 0; i < rowNum; i++)
+                {
+                    for(let j = 0; j < columnNum; j++)
+                    {
+                        let cell = document.getElementById(`cell${i},${j}`);
+                        cell.style.backgroundImage = 'url(/50688605.jpg)';  
+                    }   
+                }
+                alert("Error Depak overload : Please shut down it down")
             }
        }
-       
     })
     
 };
