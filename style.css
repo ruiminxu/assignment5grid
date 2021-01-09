@@ -1,11 +1,7 @@
 :root{
-    --To-Yellow--: #ffff00;
-    --To-Blue--: #0000ff;
-    --To-Red--: #ff0000;
-    --To-Green--: #008000;
-    --To-Orange--: #ffa500;
-    --To-white--: white;
+    
     --Changeable-Color--: white;
+    --Changeable-img--: url();
 }
 
 
@@ -20,6 +16,7 @@ tr, td {
     width: 100px;
     height: 100px;
     background-color: var(--Changeable-Color--);
+    background-image: var(--Changeable-img--);
 }
 
 #buttonContainer{
@@ -29,6 +26,7 @@ tr, td {
     text-align: center;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .btn{
@@ -75,3 +73,7 @@ tr, td {
   .dropdown:hover .dropdown-content {display: block;}
   
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+  .gridLayout{
+    
+  }

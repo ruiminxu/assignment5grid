@@ -1,8 +1,8 @@
 let rowNum = 0;
 let columnNum = 0;
 let currentColor = "white";
+let currentBackground = "url()";
 let checker = false;
-
 
 function addRow()
 {
@@ -19,6 +19,7 @@ function addRow()
         let cellName = `cell${rowNum},${columnNum}`;
         cell.setAttribute("id", cellName);
         cell.classList.add(cellName);  
+        cell.style.backgroundColor = currentColor;
         cellColorChange(cell);  
         row.appendChild(cell); 
         rowNum++;
@@ -35,6 +36,7 @@ function addRow()
                 let cellName = `cell${rowNum},${0}`;
                 cell.setAttribute("id", cellName);
                 cell.classList.add(cellName); 
+                cell.style.backgroundColor = currentColor;
                 cellColorChange(cell)
                 row.appendChild(cell); 
                 rowNum++;
@@ -52,6 +54,7 @@ function addRow()
                     let cellName = `cell${rowNum},${i}`;
                     cell.setAttribute("id", cellName);
                     cell.classList.add(cellName); 
+                    cell.style.backgroundColor = currentColor;
                     cellColorChange(cell)
                     row.appendChild(cell); 
                 }
@@ -75,6 +78,7 @@ function addColumn()
         let cellName = `cell${rowNum},${columnNum}`;
         cell.setAttribute("id", cellName);
         cell.classList.add(cellName); 
+        cell.style.backgroundColor = currentColor;
         cellColorChange(cell)
         row.appendChild(cell); 
         rowNum++;
@@ -87,6 +91,7 @@ function addColumn()
             let cellName = `cell${0},${columnNum}`;
             cell.setAttribute("id", cellName);
             cell.classList.add(cellName); 
+            cell.style.backgroundColor = currentColor;
             cellColorChange(cell)
             row.appendChild(cell); 
             columnNum++;
@@ -100,6 +105,7 @@ function addColumn()
                 let cellName = `cell${i},${columnNum}`;
                 cell.setAttribute("id", cellName);
                 cell.classList.add(cellName); 
+                cell.style.backgroundColor = currentColor;
                 cellColorChange(cell)
                 row.appendChild(cell); 
             }
@@ -147,8 +153,15 @@ function removeColumns()
 }
 
 function pickColor(id)
-{
-    currentColor = id;    
+{  
+    var x = id;
+    if(x === 'Depak')
+    {
+        currentBackground = 'url(/50688605.jpg)';
+        checker = true;
+    }else{
+        currentColor = id.toLowerCase();    
+    }
 }
 
 function fillAllCells()
@@ -194,16 +207,35 @@ function fillUncoloredCells()
 
 function cellColorChange(cell)
 {
-
     cell.addEventListener("mousedown", function()
     {
+       if(checker == false)
+       {
         var color = cell.style.backgroundColor;
         
-        if(color != currentColor)
+        
+        if(color.toLowerCase() != currentColor.toLowerCase())
         {
             cell.style.backgroundColor = currentColor;
             
+        }else if(color == currentColor){
+            cell.style.backgroundColor = "white";
         }
+       }else{
+            
+            if(currentBackground === 'url(/50688605.jpg)'){
+                console.log("heres");
+                
+                cell.style.backgroundImage = 'url(/50688605.jpg)';
+                
+                checker == true;
+            }else if(currentBackground === "url()")
+            {
+                console.log("here");
+                cell.style.backgroundImage = 'url()'; 
+            }
+       }
+       
     })
     
 };
