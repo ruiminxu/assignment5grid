@@ -3,11 +3,11 @@ let columnNum = 0;
 let currentColor = "white";
 let currentBackground = "url()";
 let checker = false;
+let rowCleared = false;
 
 function addRow()
 {
     let table = document.getElementById("grid");
-  
     if(rowNum == 0 && columnNum == 0)
     {
         let row = document.createElement("tr");
@@ -66,8 +66,7 @@ function addRow()
 function addColumn()
 {
     let table = document.getElementById("grid");
-
-    if(rowNum == 0 && columnNum == 0)
+    if(rowNum == 0 && columnNum == 0 || rowNum == -1 && columnNum == -1)
     {
         let row = document.createElement("tr");
         let cell = document.createElement("td");
@@ -112,11 +111,21 @@ function addColumn()
             columnNum++;
         }
     }
+
 }
 
 function removeRows()
 {
-    if(rowNum === 0)
+    if(rowNum === 1)
+    {
+        let currentRowIndex = rowNum - 1;
+        let row = document.getElementById(`row${currentRowIndex}`).remove();
+        rowNum--;
+        if(rowNum === 0)
+        {
+            columnNum = 0;
+        }
+    }else if(rowNum === 0)
     {
         alert("There is no more rows to be removed!");
         columnNum = 0;
@@ -129,19 +138,6 @@ function removeRows()
 
 function removeColumns()
 {
-    if(columnNum === 0)
-    {
-        alert("There is no more columns to be removed!");
-        
-        for(let i = 0; i < rowNum; i++)
-        {
-            let row = document.getElementById(`row${i}`).remove();
-        }
-
-        rowNum = 0;
-
-    }else{
-        
         let currentRowIndex = rowNum - 1;
         let currentColumnIndex = columnNum - 1;
         for(let i = currentRowIndex; i >= 0; i--)
@@ -149,8 +145,23 @@ function removeColumns()
             let cell = document.getElementById(`cell${i},${currentColumnIndex}`).remove();
         }
         columnNum--;
-    }
+        
+        if(columnNum === 0)
+        {
+            for(let i = 0; i < rowNum; i++)
+            {
+                let row = document.getElementById(`row${i}`).remove();
+            }
+            rowNum = 0;
+            
+        }else if(columnNum === -1)
+        {
+            alert("There are no more columns to be removed!");
+            columnNum = 0;
+        }
+    
 }
+
 
 function pickColor(id)
 {  
