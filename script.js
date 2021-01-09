@@ -19,6 +19,7 @@ function addRow()
         let cellName = `cell${rowNum},${columnNum}`;
         cell.setAttribute("id", cellName);
         cell.classList.add(cellName);  
+        cell.style.backgroundColor = currentColor;
         cellColorChange(cell);  
         row.appendChild(cell); 
         rowNum++;
@@ -35,6 +36,7 @@ function addRow()
                 let cellName = `cell${rowNum},${0}`;
                 cell.setAttribute("id", cellName);
                 cell.classList.add(cellName); 
+                cell.style.backgroundColor = currentColor;
                 cellColorChange(cell)
                 row.appendChild(cell); 
                 rowNum++;
@@ -52,6 +54,7 @@ function addRow()
                     let cellName = `cell${rowNum},${i}`;
                     cell.setAttribute("id", cellName);
                     cell.classList.add(cellName); 
+                    cell.style.backgroundColor = currentColor;
                     cellColorChange(cell)
                     row.appendChild(cell); 
                 }
@@ -75,6 +78,7 @@ function addColumn()
         let cellName = `cell${rowNum},${columnNum}`;
         cell.setAttribute("id", cellName);
         cell.classList.add(cellName); 
+        cell.style.backgroundColor = currentColor;
         cellColorChange(cell)
         row.appendChild(cell); 
         rowNum++;
@@ -87,6 +91,7 @@ function addColumn()
             let cellName = `cell${0},${columnNum}`;
             cell.setAttribute("id", cellName);
             cell.classList.add(cellName); 
+            cell.style.backgroundColor = currentColor;
             cellColorChange(cell)
             row.appendChild(cell); 
             columnNum++;
@@ -100,6 +105,7 @@ function addColumn()
                 let cellName = `cell${i},${columnNum}`;
                 cell.setAttribute("id", cellName);
                 cell.classList.add(cellName); 
+                cell.style.backgroundColor = currentColor;
                 cellColorChange(cell)
                 row.appendChild(cell); 
             }
@@ -148,7 +154,7 @@ function removeColumns()
 
 function pickColor(id)
 {
-    currentColor = id;    
+    currentColor = id.toLowerCase();    
 }
 
 function fillAllCells()
@@ -194,15 +200,18 @@ function fillUncoloredCells()
 
 function cellColorChange(cell)
 {
-
     cell.addEventListener("mousedown", function()
     {
         var color = cell.style.backgroundColor;
+        console.log(color);
+        console.log(currentColor);
         
-        if(color != currentColor)
+        if(color.toLowerCase() != currentColor.toLowerCase())
         {
             cell.style.backgroundColor = currentColor;
             
+        }else if(color == currentColor){
+            cell.style.backgroundColor = "white";
         }
     })
     
