@@ -234,20 +234,6 @@ function cellColorChange(cell)
         }else if(color == currentColor){
             cell.style.backgroundColor = "white";
         }
-       }else{
-            
-            if(currentBackground === 'url(/50688605.jpg)'){
-                
-                for(let i = 0; i < rowNum; i++)
-                {
-                    for(let j = 0; j < columnNum; j++)
-                    {
-                        let cell = document.getElementById(`cell${i},${j}`);
-                        cell.style.backgroundImage = 'url(/50688605.jpg)';  
-                    }   
-                }
-                alert("Error Depak overload : Please shut down it down")
-            }
        }
     })
     
